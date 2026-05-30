@@ -1,0 +1,17 @@
+RewriteEngine On
+RewriteBase /
+
+# 1. Force HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# 2. Specific System Routes (Priority)
+RewriteRule ^api/([^/]+)$ api.php?action=$1 [QSA,L]
+RewriteRule ^download$ download.php [QSA,L]
+RewriteRule ^register$ api.php?action=register [QSA,L]
+RewriteRule ^update$ api.php?action=update [QSA,L]
+
+# 3. Clean URLs for Dashboard
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^([^\.]+)$ $1.php [NC,L,QSA]

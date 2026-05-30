@@ -1,0 +1,18 @@
+{
+  "functions": {
+    "api/**/*.php": {
+      "runtime": "vercel-php@0.7.2"
+    },
+    "index.php": {
+      "runtime": "vercel-php@0.7.2"
+    }
+  },
+  "routes": [
+    { "src": "/api/([^/]+)", "dest": "/api/api.php?action=$1" },
+    { "src": "/ajax", "dest": "/api/ajax.php" },
+    { "src": "/login", "dest": "/api/login.php" },
+    { "src": "/logout", "dest": "/api/logout.php" },
+    { "src": "/download", "dest": "/api/download.php" },
+    { "src": "/(.*)", "dest": "/$1" }
+  ]
+}

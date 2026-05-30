@@ -1,0 +1,7 @@
+{
+  "name": "nexus-direct",
+  "description": "Professional GPS Tracking Backend for Vercel",
+  "require": {
+    "php": ">=8.1"
+  }
+}
